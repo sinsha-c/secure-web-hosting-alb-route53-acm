@@ -211,14 +211,9 @@ nslookup example.com
 1. Open the existing **HTTP : 80** listener and choose **Edit**.
 2. Change the default action to **Redirect to URL** → Protocol **HTTPS**, Port **443**, Status code **301 (Permanently moved)**.
 3. Save the changes.
+4. Make sure `alb-sg` allows inbound **HTTPS (443)** from `0.0.0.0/0`.
 
 <img src="screenshots/13-http-redirect.png" alt="HTTP to HTTPS redirect rule" width="800">
-
-<img src="screenshots/14-https-working-cmd.png" alt="HTTP to HTTPS redirect" width="800">
-
-### 4.5 Confirm security group rules
-
-Make sure `alb-sg` allows inbound **HTTPS (443)** from `0.0.0.0/0`.
 
 ---
 
@@ -232,6 +227,8 @@ Make sure `alb-sg` allows inbound **HTTPS (443)** from `0.0.0.0/0`.
 curl -I http://example.com     # expect 301 redirect to https
 curl -I https://example.com    # expect 200 OK
 ```
+
+<img src="screenshots/14-https-working-cmd.png" alt="HTTP to HTTPS redirect" width="800">
 
 <img src="screenshots/14-https-working.png" alt="Website served over HTTPS" width="800">
 
